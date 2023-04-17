@@ -29,7 +29,7 @@ def medicalsummary(input_text):
     # Print the summary
     return summary
 
-def questiongenerator(input_text):
+def keypoints(input_text):
     # Define the API endpoint
     #api_url = "https://api-inference.huggingface.co/models/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
     # define the API endpoint
@@ -65,30 +65,6 @@ def questiongenerator(input_text):
     output = json.loads(response.content.decode("utf-8"))["outputs"][0]
     return output
 
-
-def keypoints(input_text):
-    # Define the API endpoint
-    api_url = "https://api-inference.huggingface.co/models/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
-    # Define the headers with the API token
-    api_token = "YOUR_API_TOKEN"
-    headers = {"Authorization": f"Bearer {api_token}"}
-
-    # Define the payload with the input text and parameters
-    payload = {"inputs": input_text,
-               "parameters": {"task": "summarization", "num_return_sequences": 1, "max_length": 128}}
-
-    # Send a POST request to the API endpoint with the headers and payload
-    response = requests.post(api_url, headers=headers, json=payload)
-
-    # Check if the API call was successful
-    if response.ok and response.json() and "generated_text" in response.json():
-        # Retrieve the generated key points from the response
-        key_points = response.json()['generated_text']
-
-        # Print the key points
-        print(key_points.strip())
-    else:
-        print("Failed to generate key points")
 
 
 # Create a button to generate the key points

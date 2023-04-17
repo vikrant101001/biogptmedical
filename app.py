@@ -105,6 +105,6 @@ if st.button("Generate Medical Key Points"):
     key_points = keypoints(input_text)
 
     # Display the key points
-    st.write("Medical Summary:")
+    st.write("Medical Key Points:")
     st.write(key_points)
 

@@ -2,7 +2,7 @@ import requests
 import streamlit as st
 import json
 
-st.set_page_config(layout="wide",page_title="GPT-3 Clinical Webapp")
+st.set_page_config(layout="wide",page_title="BioGPT Clinical Webapp")
 
 st.title("BIO-GPT Medical Web-App")
 

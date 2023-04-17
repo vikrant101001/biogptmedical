@@ -2,9 +2,9 @@ import requests
 import streamlit as st
 import json
 
-st.title("BIO-GPT Medical Web-App")
 st.set_page_config(layout="wide",page_title="GPT-3 Clinical Webapp")
 
+st.title("BIO-GPT Medical Web-App")
 
 # Define the input text
 input_text = st.text_area(label="Enter the medical text:", value="", height=250)

@@ -6,7 +6,7 @@ st.title("BIO-GPT Medical Web-App")
 
 
 # Define the input text
-input_text = st.text_input("Enter the medical text:",height=250)
+input_text = st.text_area(label="Enter the medical text:", value="", height=250)
 #choice = int(input("Press 1 for medical summarization and 2 for question generation"))
 
 def medicalsummary(input_text):

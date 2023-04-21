@@ -68,6 +68,13 @@ def keypoints(input_text):
 
 # Define a function to perform entity recognition
 def extract_entities(input_text):
+    # Define the API endpoint
+    api_url = "https://api-inference.huggingface.co/models/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
+    
+     # Define the headers with the API token
+    api_token = "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"
+    headers = {"Authorization": f"Bearer {api_token}"}
+    
     # Define the payload with the input text and parameters
     payload = {"inputs": input_text, "parameters": {"task": "ner"}}
 

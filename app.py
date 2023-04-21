@@ -66,7 +66,25 @@ def keypoints(input_text):
     output = json.loads(response.content.decode("utf-8"))["outputs"][0]
     return output
 
+# Define a function to perform entity recognition
+def extract_entities(input_text):
+    # Define the payload with the input text and parameters
+    payload = {"inputs": input_text, "parameters": {"task": "ner"}}
 
+    # Send a POST request to the API endpoint with the headers and payload
+    response = requests.post(api_url, headers=headers, json=payload)
+
+    # Check if the API call was successful
+    if response.ok and response.json() and "predictions" in response.json():
+        # Retrieve the entities from the response
+        entities = response.json()["predictions"][0]["entity_group"]
+        entity_text = response.json()["predictions"][0]["entity"]
+
+        # Return the entities and their corresponding text
+        return entities, entity_text
+    else:
+        return [], []
+    
 
 # Create a button to generate the key points
 if st.button("Generate Medical Summary"):
@@ -85,3 +103,16 @@ if st.button("Generate Medical Key Points"):
     st.write("Medical Key Points:")
     st.write(key_points)
 
+
+# Create a button to perform entity recognition
+if st.button("Extract Entities"):
+    # Call the extract_entities function with the input text
+    entities, entity_text = extract_entities(input_text)
+
+    # Display the extracted entities
+    if entities:
+        st.write("Entities found:")
+        for i in range(len(entities)):
+            st.write(f"{entities[i]}: {entity_text[i]}")
+    else:
+        st.write("No entities found.")

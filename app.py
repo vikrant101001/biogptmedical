@@ -121,9 +121,8 @@ if st.button("Extract Entities"):
     entities, entity_text = extract_entities(input_text)
 
     # Display the extracted entities
-    if entities:
-        st.write("Entities found:")
-        for i in range(len(entities)):
-            st.write(f"{entities[i]}: {entity_text[i]}")
-    else:
-        st.write("No entities found.")
+    
+     st.write("Entities found:")
+     for i in range(len(entities)):
+        st.write(f"{entities[i]}: {entity_text[i]}")
+    

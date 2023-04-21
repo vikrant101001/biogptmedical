@@ -122,7 +122,7 @@ if st.button("Extract Entities"):
 
     # Display the extracted entities
     
-     st.write("Entities found:")
-     for i in range(len(entities)):
-        st.write(f"{entities[i]}: {entity_text[i]}")
+    st.write("Entities found:")
+    for i in range(len(entities)):
+       st.write(f"{entities[i]}: {entity_text[i]}")
     

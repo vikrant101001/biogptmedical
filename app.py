@@ -6,8 +6,10 @@ st.set_page_config(layout="wide",page_title="BioGPT Clinical Webapp")
 
 st.title("BIO-GPT Medical Web-App")
 
-# Define the input text
-input_text = st.text_area(label="Enter the medical text:", value="", height=250)
+
+# Define the headers with the API token
+api_token = "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"
+headers = {"Authorization": f"Bearer {api_token}"}
 #choice = int(input("Press 1 for medical summarization and 2 for question generation"))
 
 def medicalsummary(input_text):
@@ -71,9 +73,7 @@ def extract_entities(input_text):
     # Define the API endpoint
     api_url = "https://api-inference.huggingface.co/models/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
     
-     # Define the headers with the API token
-    api_token = "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"
-    headers = {"Authorization": f"Bearer {api_token}"}
+
     
     # Define the payload with the input text and parameters
     payload = {"inputs": input_text, "parameters": {"task": "ner"}}
@@ -92,6 +92,8 @@ def extract_entities(input_text):
     else:
         return [], []
     
+# Define the input text
+input_text = st.text_area(label="Enter the medical text:", value="", height=250)
 
 # Create a button to generate the key points
 if st.button("Generate Medical Summary"):
